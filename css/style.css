@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+/* Existing styles */
+.film-box h1 {
+    font-size: 3em;
+    font-weight: 400;
+    font-family: "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    padding: 0;
+    align-self: center;
+}
+
+/* Add other existing styles here *//* Fonts */
+.source-sans-3
+{
+    font-family: "Source Sans 3", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+/* animations */
+@keyframes imageZoomIn {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+@keyframes border-animation {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+
+
+
+
+body{
+    color: #F2F1E8;
+    font-family: "DM Serif Display", sans-serif;
+    background-color: #201d1c;
+}
+h1{
+    margin: 0;
+}
+.title{
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: 400;
+    font-family: "Bebas Neue", sans-serif;
+    color: #f2e8ea;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #F2F1E8;
+    margin-bottom: 1em;
+}
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+}
+nav ul li {
+    margin: 0 10px;
+}
+a {
+    font-family: "Rufina", sans-serif;
+
+    text-decoration: none;
+    color: #F2F1E8;
+    font-size: 1.2em;
+    font-weight: 400;
+    position: relative;
+
+}
+.a-animation:hover {
+    color: #828281;
+}
+.a-animation::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #F2F1E8;
+    transition: width 0.3s ease-in-out;
+}
+.a-animation:hover::after {
+    width: 100%;
+}
+.title:hover {
+    color: #666;
+}
+
+/* Login */
+label{
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #F2F1E8;
+
+}
+.form-group{
+    margin: 0.5em 0;
+}
+
+button, input, select{
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #F2F1E8;
+    background-color: #5a5858   ;
+    border: 1px solid #777771;
+    border-radius: 10px;
+    padding: 1px 10px;
+    cursor: pointer;
+
+}
+button:hover{
+    background-color: #666;
+    border-color: #5a5858;
+
+}
+/* Hide the default file input */
+input[type="file"] {
+    display: none;
+}
+/* Style the custom button */
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #5a5858;
+    color: #F2F1E8;
+    border: 1px solid #777771;
+    border-radius: 10px;
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.custom-file-upload:hover , input:hover{
+    background-color: #666;
+    border-color: #5a5858;
+}
+
+input[type="text"], input[type="password"]{
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #F2F1E8;
+    border-radius: 10px;
+    padding: 1px 10px;
+}
+/* Style for autocomplete dropdown, the style was being changed when autocomplete appeared  */
+input[type="text"]:-webkit-autofill,
+input[type="password"]:-webkit-autofill {
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #F2F1E8;
+    background-color: #201d1c !important;
+    border: 1px solid #F2F1E8;
+    border-radius: 10px;
+    padding: 1px 10px;
+    -webkit-box-shadow: 0 0 0 30px #201d1c inset !important;
+    -webkit-text-fill-color: #F2F1E8 !important;
+}
+
+/* Style for the error message */
+.error-message p{
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 8em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #ffe302;
+    background-color: #201d1c;
+    border-radius: 10px;
+    padding: 1px 10px;
+    margin: 0.5em 0;
+
+}
+/* Style for all the films */
+
+.film-list-ul{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+.film-list-ul li{
+    list-style: none;
+    margin: 0.5em;
+    padding: 0;
+}
+
+/* Apply the animation to the images */
+.film-list-ul li img {
+    width: 200px;
+    height: auto;
+    border-radius: 2px;
+    backface-visibility: hidden; /* Prevents blurriness */
+    will-change: transform; /* Optimizes rendering */
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.6s;
+}
+
+
+.film-name-box:hover {
+    animation: imageZoomIn 0.3s forwards;
+}
+.film-name-box h2 {
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 30px;
+        text-align: center;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 15ch; /* Limit the title to 15 characters */
+}
+
+
+
+/* Style for individual film */
+.film-box{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #F2F1E8;
+    border-top: 1px solid #F2F1E8;
+
+    padding: 1em 0;
+    margin: 0 6em;  /* Centers the image horizontally */
+
+}
+ .film-h1{
+    font-size: 3em;
+    font-weight: 400;
+    font-family: "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    justify-self: center;
+    padding: 0;
+}
+.film-container{
+    display: flex;
+    justify-content: center;
+}
+.film-photo{
+    max-width: 500px;  /* Limits the width of the image */
+}
+.film-photo img{
+    width: 100%;  /* Make the image take up the full width of the container */
+    max-width: 22em;
+    height: auto;  /* Maintains the aspect ratio of the image */
+    border-radius: 2px;  /* Adds rounded corners for a smoother look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Adds a slight shadow for depth */
+}
+.film-details{
+    /* justify  */
+    display: flex;
+
+    font-size: 2em;
+    font-weight: 400;
+    font-family: "Source Sans 3", sans-serif;
+}
+.description{
+    max-width: 400px; /* Adjust the width as needed */
+    word-wrap: anywhere; /* Ensure long words break and wrap to the next line */
+    }
+/* Ensure the description is hidden by default */
+/* Toggle Button Style */
+
+
+#toggleDescriptionBtn {
+    vertical-align: center;
+    background-color: #777771; /* Green background */
+    color: white;
+    border: none;              /* Remove border */
+    text-decoration: none;     /* Remove text underline */
+    display: inline-block;
+    font-size: 16px;
+    font-family: "Source Sans 3", sans-serif;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#toggleDescriptionBtn:hover {
+    background-color: #45a049; /* Darker green on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+}
+#descriptionContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+#descriptionContent.show {
+    max-height: 500px; /* Adjust based on your description's typical height */
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    animation: border-animation 0.8s ease-in-out;
+}
+table tr:last-child {
+    border-bottom: none;
+}
+tr{
+    border-bottom: 1px solid #F2F1E8;
+    margin: 0;
+    font-family: "Rufina", sans-serif;
+
+}
+th{
+    font-family: "DM Serif Display", sans-serif;
+    font-size: 1em;
+    padding: 0 0.5em;
+    text-align: left;
+}
+td{
+    padding: 0 0.5em;
+    font-size: 0.8em;
+    text-align: left;
+}
+td a{
+    font-size: 0.8em;
+}
+
+/* Style for the form */
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 2em;
+    border-radius: 10px;
+    background-color: #312c2b;
+    width: 50%;
+}
+textarea{
+    font-size: 1.5em;
+    font-weight: 400;
+    font-family: "Source Sans 3", sans-serif;
+    border-radius: 10px;
+    padding: 1px 10px;
+}
+label{
+    font-size: 1.5em;
+    font-weight: 700;
+    /* bold font 700 */
+
+
+    font-family: "Source Sans 3", sans-serif;
+    color: #F2F1E8;
+}
+.form-h1{
+    font-size: 3em;
+    font-weight: 700;
+    font-family: "Source Sans 3", sans-serif;
+    padding: 0;
+    align-self: center;
+}
+input{
+    font-size: 1.5em;
+    font-weight: 700;
+    font-family: "Source Sans 3", sans-serif;
+    color: #F2F1E8;
+    border-radius: 10px;
+    padding: 1px 10px;
+}
+h2{
+    font-size: 2em;
+    font-weight: 400;
+    font-family: "DM Serif Display", sans-serif;
+    color: #F2F1E8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for directors  */
+.ul-directors{
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-bottom: 4em;
+}
+.ul-directors a{
+    align-self: self-start; /* Prevents the animation from taking all the width of the list */
+}
+.ul-directors li{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0.5em;
+    padding: 0;
+}
+.ul-directors h2{
+    font-size: 1.2em;
+    font-weight: 400;
+    font-family: "DM Serif Display", sans-serif;
+    margin: 0;
+    padding: 0;
+    align-self: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 22ch; /* Limit the title to 22 characters */
+}
+.ul-directors img{
+    width: 200px;
+    height: auto;
+    border-radius: 2px;
+
+}
+.img-box{
+    height: 300px;
+}
+.ul-h1{
+    font-size: 3em;
+    font-weight: 400;
+    font-family: "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    padding: 0;
+    justify-self: center;
+}
+
+/* Style for individual directors */
+.ul-individual-director{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #F2F1E8;
+    border-top: 1px solid #F2F1E8;
+    padding: 1em 0;
+    margin: 0 6em 4em;    /* Centers horizontally */
+
+}
+.ul-individual-director a{
+    font-size: 2em;
+    font-weight: 400;
+    font-family: "DM Serif Display", sans-serif;
+    color: #F2F1E8;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+.ul-individual-director li{
+    list-style: none;
+}

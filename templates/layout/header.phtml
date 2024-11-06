@@ -1,0 +1,55 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- head -->
+<head>
+    <meta charset="UTF-8">
+    <base href="<?php echo BASE_URL ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titulo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rufina:wght@400;700&display=swap" rel="stylesheet">    <link rel="stylesheet" href="css/style.css?v=1.0">
+</head>
+
+<body>
+
+
+<header>
+    <nav>
+        <h1>
+            <a href="" class="a-animation title">Filmpedia </a>
+        </h1>
+        <ul>
+            <li>
+                <a href="<?= BASE_URL . '/peliculas' ?>" class="a-animation">Peliculas</a>
+            </li>
+            <li>
+                <a href="<?= BASE_URL . '/verDirectores' ?>" class="a-animation">Directores</a>
+            </li>
+            <?php if (isset($_SESSION['ID_USER'])): ?>
+                <li>
+                    <a href="agregarPelicula" class="a-animation">Crear</a>
+                </li>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['ID_USER'])): ?>
+                <li>
+                    <a href="<?= BASE_URL . '/logout' ?>" class="a-animation">Logout</a>
+                </li>
+            <?php else: ?>
+                <li>
+                    <a href="<?= BASE_URL . '/showLogin' ?>" class="a-animation">Login</a>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </nav>
+</header>
+

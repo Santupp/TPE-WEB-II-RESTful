@@ -1,0 +1,27 @@
+
+<form action="editarPelicula/<?= $film->id ?>" method="POST">
+    <h1 class="form-h1">Editar Película</h1>
+
+    <label for="nombre">Editar nombre:</label>
+    <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($film->nombre) ?>" required>
+
+    <label for="fecha_estreno">Editar fecha de estreno:</label>
+    <input type="date" id="fecha_estreno" name="fecha_estreno" value="<?= htmlspecialchars($film->fecha_estreno) ?>" required>
+
+    <label for="genero">Editar género:</label>
+    <input type="text" id="genero" name="genero" value="<?= htmlspecialchars($film->genero) ?>" required>
+
+    <label for="descripcion">Editar descripción:</label>
+    <textarea id="descripcion" name="descripcion" required><?= htmlspecialchars($film->descripcion) ?></textarea>
+
+    <label for="director">Editar director:</label>
+    <select id="director" name="director" required>
+        <?php foreach ($directors as $director): ?>
+            <option value="<?= $director->id ?>" <?= $director->id == $film->id_director ? 'selected' : '' ?>>
+                <?= htmlspecialchars($director->nombre) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+
+    <button type="submit">Actualizar película</button>
+</form>
