@@ -206,6 +206,7 @@ input[type="password"]:-webkit-autofill {
     padding: 0;
 }
 
+
 /* Apply the animation to the images */
 .film-list-ul li img {
     width: 200px;
@@ -222,6 +223,7 @@ input[type="password"]:-webkit-autofill {
 .film-name-box:hover {
     animation: imageZoomIn 0.3s forwards;
 }
+
 .film-name-box h2 {
         font-family: "Bebas Neue", sans-serif;
         font-weight: 400;

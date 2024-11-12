@@ -4,9 +4,20 @@ class FilmModel extends ConfigModel
 {
 
 
-    public function getFilms()
+    public function getFilms($orderBy = false)
     {
-        $query = $this->db->prepare('SELECT * FROM peliculas');
+        $sql = 'SELECT * FROM peliculas';
+
+        switch ($orderBy){
+            case 'asc':
+                $sql .= ' ORDER BY nombre ASC';
+                break;
+            case 'desc':
+                $sql .= ' ORDER BY nombre DESC';
+                break;
+        }
+        
+        $query = $this->db->prepare($sql);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }

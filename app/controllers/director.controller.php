@@ -18,7 +18,7 @@
         }
 
         public function addDirector() {
-            if (!isset($_POST['nombre']) || empty($_POST['nombre'])) { 
+            if (!isset($_POST['nombre']) || empty($_POST['nombre']) ) {
                 return $this->view->showError('Falta completar el nombre');
             }
             $nombre = $_POST['nombre'];

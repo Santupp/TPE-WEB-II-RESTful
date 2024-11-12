@@ -17,7 +17,9 @@
     <?php foreach($films as $film): ?>
         <li class="film-name-box">
             <a href="pelicula/<?= $film->id ?>">
-                <img src="<?= $film->imagen ?>" width="200" alt="<?= htmlspecialchars($film->nombre) ?>">
+                <div class="img-box">
+                    <img src="<?= $film->imagen ?>" width="200" alt="<?= htmlspecialchars($film->nombre) ?>">
+                </div>
             </a>
             <a href="pelicula/<?= $film->id ?>">
                 <h2><?= htmlspecialchars($film->nombre) ?></h2>

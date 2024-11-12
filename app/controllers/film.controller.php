@@ -1,7 +1,8 @@
 <?php
 require_once 'app/models/film.model.php';
 require_once 'app/views/film.view.php';
-class FilmController
+require_once 'app/views/json.view.php';
+class   FilmController
 {
     private $model;
     private $view;
@@ -10,17 +11,86 @@ class FilmController
     public function __construct()
     {
         $this->model = new FilmModel();
-        $this->view = new FilmView();
+        $this->view = new JSONView();
     }
-    public function showFilms()
+    public function showFilms($req, $res)
     {
-        $films = $this->model->getFilms();
-        $this->view->showFilms($films);
+    //        if(!$res->user) {
+    //            return $this->view->response("No autorizado", 401);
+    //        }
+        $orderBy = $req->query->orderBy ?? false; // Si no se envía orderBy, se asigna false
+
+        $films = $this->model->getFilms($orderBy);  // No es necesario el coalescing operator (??),
+                                                    // se usa el query solamente para obtener
+                                                    // parametros de la URL.
+        if (!$films) {
+            return $this->view->response("No se encontraron peliculas", 404);
+        }
+        return $this->view->response($films);
     }
+    public function showFilm($req, $res)
+    {
+//          if(!$res->user) {
+//             return $this->view->response("No autorizado", 401);
+//          }
+        $id = $req->params->id;
+        $film = $this->model->getFilm($id);
+        if (!$film) {
+            return $this->view->response("No se encontro la pelicula", 404);
+        }
+        return $this->view->response($film);
+
+    }
+    public function updateFilm($req, $res) {
+        $id = $req->params->id;
+        $film = $this->model->getFilm($id);
+        if (!$film) {
+            return $this->view->showError("No existe la pelicula con id= $id", 404);
+        }
+        if (empty($req -> body -> nombre)        || empty($req -> body -> fecha_estreno) ||
+            empty($req -> body -> genero)        || empty($req -> body -> descripcion)   ||
+            empty($req -> body -> director))
+        {
+            return $this->view->response("Faltan datos obligatorios", 400);
+        }
+
+
+
+        $nombre = $req -> body -> nombre;
+        $fechaEstreno = $req -> body -> fecha_estreno;
+        $genero = $req -> body -> genero;
+        $descripcion = $req -> body -> descripcion;
+        $idDirector = $req -> body -> director;
+
+
+        $this->model->updateFilm($id, $nombre, $fechaEstreno, $genero, $descripcion, $idDirector);
+        $film = $this->model->getFilm($id);
+        return $this->view->response($film, 200);
+
+
+    }
+    public function deleteFilm($req, $res) {
+        $id = $req->params->id;
+
+        $film = $this->model->getFilm($id);
+        if (!$film) {
+            return $this->view->showError("No existe la pelicula con id= $id", 404);
+        }
+
+        $this->model->deleteFilm($id);
+        $this->view->response("La tarea con el id=$id se eliminó con éxito", 200);
+        // header('Location: ' . BASE_URL . 'verDirectores');
+    }
+
+    // ↓ FALTA IMPLEMENTAR ↓  //
+
+
+
+
 
     public function addFilms() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Procesar los datos del formulario
+//      Procesar los datos del formulario
             $nombre = $_POST['nombre'];
             $estreno = $_POST['estreno'];
             $genero = $_POST['genero'];
@@ -33,14 +103,15 @@ class FilmController
                 $resultado = $this->model->addFilm($nombre, $estreno, $genero, $director, $descripcion);
             }
 
-            // Redirigir dependiendo del resultado
+//      Redirigir dependiendo del resultado
             if ($resultado) {
                 header('Location: ' . BASE_URL . 'peliculas?mensaje=Película agregada con éxito');
             } else {
                 header('Location: ' . BASE_URL . 'agregarPelicula?mensaje=Error al agregar la película');
             }
-        } else {
-            // Mostrar el formulario para agregar película
+        }
+        else {
+//      Mostrar el formulario para agregar película
             $this->showAddFilmForm();
         }
     }
@@ -49,19 +120,6 @@ class FilmController
         $this->view->showAddFilmForm($directors);
     }
 
-    public function showFilm($id)
-    {
-        $film = $this->model->getFilm($id);
-        if ($film) {    
-            $film->director_nombre = $this->model->getDirectorNameById($film->id_director);
-        }
-        if (!$film) {
-            $this->view->showError("No existe la pelicula con id= $id");
-            return;
-        }
-        $directors = $this->model->getDirectors();
-        $this->view->showFilm($film, $directors);
-    }
 
     public function showFilmsByDirector($directorID) {
         $director = $this->model->getDirectorById($directorID);
@@ -72,27 +130,6 @@ class FilmController
         $peliculas = $this->model->getFilmsByDirector($directorID);
         $this->view->showFilmsByDirector($peliculas, $director);
     }
-    public function deleteFilm($id) {
-        $film = $this->model->getFilm($id);
-            if (!$film) {
-                return $this->view->showError("No existe la pelicula con id= $id");
-            }
-            $this->model->deleteFilm($id);
-            header('Location: ' . BASE_URL . 'verDirectores');
-    }
-    public function updateFilm($id) {
-        if (isset($_POST['nombre']) && !empty($_POST['nombre']) &&
-            isset($_POST['fecha_estreno']) && !empty($_POST['fecha_estreno']) &&
-            isset($_POST['genero']) && !empty($_POST['genero']) &&
-            isset($_POST['descripcion']) && !empty($_POST['descripcion']) &&
-            isset($_POST['director']) && !empty($_POST['director'])) {
-                $nombre = $_POST['nombre'];
-                $fechaEstreno = $_POST['fecha_estreno'];
-                $genero = $_POST['genero'];
-                $descripcion = $_POST['descripcion'];
-                $idDirector = $_POST['director'];
-                $this->model->updateFilm($id, $nombre, $fechaEstreno, $genero, $descripcion, $idDirector);
-            }
-            header('Location: ' . BASE_URL . 'pelicula/' . $id);
-    }
+
+
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2024 a las 03:31:45
+-- Tiempo de generación: 13-11-2024 a las 00:31:10
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -20,29 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tpe`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `directores`
---
-
-CREATE TABLE `directores` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `imagen` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `directores`
---
-
-INSERT INTO `directores` (`id`, `nombre`, `imagen`) VALUES
-(23, 'Chistopher Nolan ', 'images/6713fb97752e94.30342598.jpg'),
-(24, 'Francis Ford Coppola', 'images/67141f85ba28f9.81827052.jpg'),
-(25, 'Charlotte Wells', 'images/67153ebbe72231.87949377.jpg'),
-(26, 'Quentin Tarantino', 'images/67153f803c2ab8.66337206.jpg'),
-(27, 'Damien Chazelle', 'images/67154099611d96.37090947.jpg');
 
 -- --------------------------------------------------------
 
@@ -72,38 +49,21 @@ INSERT INTO `peliculas` (`id`, `nombre`, `fecha_estreno`, `genero`, `descripcion
 (27, 'Whiplash', '2015-01-22', 'Drama', 'Whiplash es una película dramático-musical estadounidense de 2014 que narra la historia de Andrew Neiman, un joven baterista de jazz que aspira a ser el mejor y entrar en la orquesta de élite de su escuela de música', 'images/671540e98f2a60.20214865.jpg', 27),
 (28, 'Django desencadenado', '2013-01-31', 'Drama', 'Django desencadenado es una película estadounidense de 2012 que cuenta la historia de un esclavo liberado que se alía con un cazarrecompensas para vengar sus afrentas y liberar a su esposa:', 'images/671541b08e3402.43164334.jpg', 26),
 (29, 'Érase una vez en… Hollywood', '2019-08-22', 'Comedia', 'Érase una vez en... Hollywood es una película estadounidense de 2019, escrita y dirigida por Quentin Tarantino, que cuenta la historia de un actor de televisión y su doble en los años 60, en un Hollywood que está cambiando.', 'images/67154216c8e6b9.20012915.jpg', 26),
-(33, 'El Padrino 2', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario`
---
-
-CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
-  `email` varchar(250) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`id`, `email`, `password`, `username`) VALUES
-(1, 'nico@web2.com', '$2y$10$xQop0wF1YJ/dKhZcWDqHceUM96S04u73zGeJtU80a1GmM.H5H0EHC', ''),
-(2, '', '$2y$10$XJjarJMOLhdRCYgycMxaG.uzrX6mqYXv/MgVa6POvHFpjuw4Don2G', 'webadmin');
+(33, 'El Padrino 2', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
+(41, 'El Padrino 23º1', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
+(43, '321321312', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
+(44, '214412', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
+(45, '12421', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
+(46, 'fdsafas', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
+(47, 'vxzcvzxvzx', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
+(48, 'v', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
+(49, 'vczxvzx', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
+(50, 'vzxcvz', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
+(51, 'Fulano', '2023-01-03', 'sci-fi', 'Fulanito de tal ', 'images/6715a76688ceb5.25378058.jpg', 24);
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `directores`
---
-ALTER TABLE `directores`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `peliculas`
@@ -113,33 +73,14 @@ ALTER TABLE `peliculas`
   ADD KEY `id_director` (`id_director`);
 
 --
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `email` (`email`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `directores`
---
-ALTER TABLE `directores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `peliculas`
 --
 ALTER TABLE `peliculas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Restricciones para tablas volcadas

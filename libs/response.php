@@ -1,4 +1,4 @@
 <?php
-class Response {
-    public $user = null;
-}
+    class Response {
+        public $user = null;
+    }
