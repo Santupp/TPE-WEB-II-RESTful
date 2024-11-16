@@ -42,4 +42,9 @@
             ));
             return $this->view->response($token);
         }
+        public function register($req, $res) {
+            if ($req->body->username && $req->body->email && $req->body->password)
+                return $this->model->createUser($req->body->username, $req->body->email, $req->body->password);
+            return $this->view->response("Error en los datos ingresados", 400);
+        }
     }

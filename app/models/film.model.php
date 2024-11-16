@@ -29,12 +29,17 @@ class FilmModel extends ConfigModel
 
     }
     public function addFilm($nombre, $estreno, $genero, $id_director, $descripcion) {
+//  TODO: AGREGAR IMAGENES
 
-        $filePath = "images/" . uniqid("", true) . "." . strtolower(pathinfo($_FILES['input_name']['name'], PATHINFO_EXTENSION));
-        move_uploaded_file($_FILES['input_name']['tmp_name'], $filePath);
+//        $filePath = "images/" . uniqid("", true) . "." . strtolower(pathinfo($_FILES['input_name']['name'], PATHINFO_EXTENSION));
+//        move_uploaded_file($_FILES['input_name']['tmp_name'], $filePath);
+            $query = $this->db->prepare('INSERT INTO peliculas (nombre, fecha_estreno, genero, id_director, descripcion) VALUES (?, ?, ?,?, ?)');
+            $query->execute([$nombre, $estreno, $genero,$id_director ,$descripcion]);
 
-        $query = $this->db->prepare('INSERT INTO peliculas (nombre, fecha_estreno, genero, id_director, descripcion, imagen) VALUES (?, ?, ?, ?,?, ?)');
-        $query->execute([$nombre, $estreno, $genero,$id_director ,$descripcion, $filePath]);
+
+//
+//        $query = $this->db->prepare('INSERT INTO peliculas (nombre, fecha_estreno, genero, id_director, descripcion, imagen) VALUES (?, ?, ?, ?,?, ?)');
+//        $query->execute([$nombre, $estreno, $genero,$id_director ,$descripcion, $filePath]);
 
         return $this->db->lastInsertId();
     }

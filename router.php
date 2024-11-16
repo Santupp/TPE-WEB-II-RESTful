@@ -43,16 +43,17 @@ $router -> addMiddleware(new JWTAuthMiddleware());
 $router -> addRoute('peliculas', 'GET', 'FilmController', 'showFilms');
 $router -> addRoute('peliculas/ordered', 'GET', 'FilmController', 'showFilms');
 $router -> addRoute('peliculas/:id', 'GET', 'FilmController', 'showFilm');
-$router  -> addRoute('peliculas/:id', 'POST', 'FilmController', 'addFilm');
+$router -> addRoute('peliculas', 'POST', 'FilmController', 'addFilm');
 $router -> addRoute('peliculas/:id', 'PUT', 'FilmController', 'updateFilm');
 $router -> addRoute('peliculas/:id', 'DELETE', 'FilmController', 'deleteFilm');
 
 $router -> addRoute('GET', 'showLogin', 'AuthController', 'showLogin');
 
-$router->addRoute('usuarios/token'    ,            'GET',     'UserApiController',   'getToken');
+$router->addRoute('usuarios/register', 'POST', 'UserApiController', 'register');
+$router -> addRoute('usuarios/token'    ,            'GET',     'UserApiController',   'getToken');
 
 
-$router ->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
+$router -> route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
 
 //
 // base_url para redirecciones y base tag

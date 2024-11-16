@@ -15,9 +15,9 @@ class   FilmController
     }
     public function showFilms($req, $res)
     {
-    //        if(!$res->user) {
-    //            return $this->view->response("No autorizado", 401);
-    //        }
+            if(!$res->user) {
+                return $this->view->response("No autorizado", 401);
+            }
         $orderBy = $req->query->orderBy ?? false; // Si no se envía orderBy, se asigna false
 
         $films = $this->model->getFilms($orderBy);  // No es necesario el coalescing operator (??),
@@ -81,6 +81,33 @@ class   FilmController
         $this->view->response("La tarea con el id=$id se eliminó con éxito", 200);
         // header('Location: ' . BASE_URL . 'verDirectores');
     }
+    public function addFilm($req, $res){
+        if (empty($req -> body -> nombre)           ||
+            empty($req -> body -> fecha_estreno)    ||
+            empty($req -> body -> genero)           ||
+            empty($req -> body -> descripcion)      ||
+            empty($req -> body -> director)
+        ){
+            return $this -> view -> response("Faltan completar datos para agregar la pelicula", 400 );
+        }
+
+        $nombre =        $req -> body -> nombre;
+        $fecha_estreno = $req -> body -> fecha_estreno;
+        $genero =        $req -> body -> genero;
+        $director =      $req -> body -> director;
+        $descripcion =   $req -> body -> descripcion;
+
+        $id = $this -> model ->addFilm($nombre, $fecha_estreno, $genero, $director, $descripcion);
+
+        if (!$id){
+            return $this -> view ->response("Error al insertar la pelicula", 500 );
+        }
+
+
+        $film = $this -> model -> getFilm($id);
+        return $this ->view->response($film, 200);
+
+    }
 
     // ↓ FALTA IMPLEMENTAR ↓  //
 
@@ -89,6 +116,14 @@ class   FilmController
 
 
     public function addFilms() {
+        foreach ($turnos as $turno){
+            $masctota = $this -> model -> getMascota($turno -> id_mascota);
+            $turno -> nombre_mascota  = $mascota -> $nombre;
+
+        }
+
+
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //      Procesar los datos del formulario
             $nombre = $_POST['nombre'];

@@ -18,4 +18,7 @@ class UserModel {
     {
     return $this->config->getUserByUsername($username); // Delegate query to ConfigModel
     }
+    public function createUser($name, $email, $pass) {
+        $this->config->createUser($name, $email, $pass); // Delegate query to ConfigModel
+    }
 }

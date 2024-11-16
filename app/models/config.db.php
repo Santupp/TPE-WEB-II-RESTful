@@ -10,9 +10,19 @@ class ConfigModel {
             MYSQL_USER,
             MYSQL_PASS
         );
-
         // Llamamos a la función de auto despliegue
         $this->deploy();
+    }
+    public function executeQuery($query, $params) {
+        $query = $this->db->prepare($query);
+        $query->execute($params);
+        return $query;
+    }
+
+    public function executeQueryWithParams($query, $params) {
+        $stmt = $this->db->prepare($query);
+        $stmt->execute($params);
+        return $stmt;
     }
     public function getUserByEmail($email) {
         $query = $this->db->prepare("SELECT * FROM usuario WHERE email = ?");
@@ -27,7 +37,11 @@ class ConfigModel {
 
         return $query->fetch(PDO::FETCH_OBJ);
     }
-
+    public function createUser($name, $email, $pass) {
+        $pass = password_hash($pass, PASSWORD_BCRYPT);
+        $sql = "INSERT INTO usuario(username, email, password, admin) VALUES (:name, :email, :pass, 0)";
+        $this->executeQueryWithParams($sql, [':name' => $name, ':email' => $email, ':pass' => $pass]);
+    }
 
     // Desplegar la base de datos automáticamente si no existen tablas
     private function deploy() {
@@ -90,4 +104,4 @@ class ConfigModel {
         }
     }
 }
-?>
+
