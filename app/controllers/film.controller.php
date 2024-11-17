@@ -1,6 +1,5 @@
 <?php
 require_once 'app/models/film.model.php';
-require_once 'app/views/film.view.php';
 require_once 'app/views/json.view.php';
 class   FilmController
 {
@@ -15,9 +14,8 @@ class   FilmController
     }
     public function showFilms($req, $res)
     {
-            if(!$res->user) {
-                return $this->view->response("No autorizado", 401);
-            }
+        if (!$res->user) return $this->view->response("No autorizado", 401);
+
         $orderBy = $req->query->orderBy ?? false; // Si no se envía orderBy, se asigna false
 
         $films = $this->model->getFilms($orderBy);  // No es necesario el coalescing operator (??),
@@ -30,9 +28,8 @@ class   FilmController
     }
     public function showFilm($req, $res)
     {
-//          if(!$res->user) {
-//             return $this->view->response("No autorizado", 401);
-//          }
+        if (!$res->user) return $this->view->response("No autorizado", 401);
+
         $id = $req->params->id;
         $film = $this->model->getFilm($id);
         if (!$film) {
@@ -42,6 +39,9 @@ class   FilmController
 
     }
     public function updateFilm($req, $res) {
+        if (!isAdmin($res))
+            return $this->view->response('Access denied.', 403);
+
         $id = $req->params->id;
         $film = $this->model->getFilm($id);
         if (!$film) {
@@ -70,6 +70,9 @@ class   FilmController
 
     }
     public function deleteFilm($req, $res) {
+        if (!isAdmin($res))
+            return $this->view->response('Access denied.', 403);
+
         $id = $req->params->id;
 
         $film = $this->model->getFilm($id);
@@ -82,6 +85,9 @@ class   FilmController
         // header('Location: ' . BASE_URL . 'verDirectores');
     }
     public function addFilm($req, $res){
+        if (!isAdmin($res))
+            return $this->view->response('Access denied.', 403);
+
         if (empty($req -> body -> nombre)           ||
             empty($req -> body -> fecha_estreno)    ||
             empty($req -> body -> genero)           ||
@@ -108,63 +114,4 @@ class   FilmController
         return $this ->view->response($film, 200);
 
     }
-
-    // ↓ FALTA IMPLEMENTAR ↓  //
-
-
-
-
-
-    public function addFilms() {
-        foreach ($turnos as $turno){
-            $masctota = $this -> model -> getMascota($turno -> id_mascota);
-            $turno -> nombre_mascota  = $mascota -> $nombre;
-
-        }
-
-
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//      Procesar los datos del formulario
-            $nombre = $_POST['nombre'];
-            $estreno = $_POST['estreno'];
-            $genero = $_POST['genero'];
-            $descripcion = $_POST['descripcion'];
-            $director = $_POST['director'];
-
-            if ($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {
-                $resultado = $this->model->addFilm($nombre, $estreno, $genero, $director,$descripcion , $_FILES['input_name']['tmp_name']);
-            } else {
-                $resultado = $this->model->addFilm($nombre, $estreno, $genero, $director, $descripcion);
-            }
-
-//      Redirigir dependiendo del resultado
-            if ($resultado) {
-                header('Location: ' . BASE_URL . 'peliculas?mensaje=Película agregada con éxito');
-            } else {
-                header('Location: ' . BASE_URL . 'agregarPelicula?mensaje=Error al agregar la película');
-            }
-        }
-        else {
-//      Mostrar el formulario para agregar película
-            $this->showAddFilmForm();
-        }
-    }
-    public function showAddFilmForm() {
-        $directors = $this->model->getDirectors();
-        $this->view->showAddFilmForm($directors);
-    }
-
-
-    public function showFilmsByDirector($directorID) {
-        $director = $this->model->getDirectorById($directorID);
-        if (!$director) {
-            $this->view->showError("Director no es valido.");
-            return;
-        }
-        $peliculas = $this->model->getFilmsByDirector($directorID);
-        $this->view->showFilmsByDirector($peliculas, $director);
-    }
-
-
 }

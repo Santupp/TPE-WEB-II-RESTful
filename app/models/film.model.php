@@ -29,7 +29,7 @@ class FilmModel extends ConfigModel
 
     }
     public function addFilm($nombre, $estreno, $genero, $id_director, $descripcion) {
-//  TODO: AGREGAR IMAGENES
+//  TODO: AGREGAR IMAGENES, no elimino las lineas comentadas para no perder el codigo
 
 //        $filePath = "images/" . uniqid("", true) . "." . strtolower(pathinfo($_FILES['input_name']['name'], PATHINFO_EXTENSION));
 //        move_uploaded_file($_FILES['input_name']['tmp_name'], $filePath);

@@ -47,3 +47,9 @@
 
         return $payload;
     }
+function isAdmin($res) {
+    if (!$res->user || $res->user->role != 'admin')
+        return false;
+
+    return true;
+}

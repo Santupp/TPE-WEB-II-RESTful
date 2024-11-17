@@ -1,7 +1,5 @@
 <?php
     require_once 'app/models/director.model.php';
-    require_once 'app/views/director.view.php';
-
     class DirectorController {
 
         private $model;

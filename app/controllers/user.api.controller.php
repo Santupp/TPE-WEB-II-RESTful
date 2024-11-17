@@ -35,7 +35,7 @@
             $token = createJWT(array(
                 'sub' => $user->id,
                 'email' => $user->email,
-                'role' => 'admin',
+                'role' => $user->admin == 1 ? 'admin' : 'user',
                 'iat' => time(),
                 'exp' => time() + 60,
                 'Saludo' => 'Hola',
@@ -43,8 +43,11 @@
             return $this->view->response($token);
         }
         public function register($req, $res) {
-            if ($req->body->username && $req->body->email && $req->body->password)
-                return $this->model->createUser($req->body->username, $req->body->email, $req->body->password);
-            return $this->view->response("Error en los datos ingresados", 400);
+            if (!isset($req->body->username) || !isset($req->body->email) || !isset($req->body->password)) {
+                return $this->view->response("Faltan datos obligatorios", 400);
+            }
+            $this->model->createUser($req->body->username, $req->body->email, $req->body->password);
+            $user = $this->model->getUserByEmail($req->body->email);
+            return $this->view->response("Usuario creado, con el email: " . $user->email, 201);
         }
     }

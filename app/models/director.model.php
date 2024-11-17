@@ -1,6 +1,5 @@
 <?php
 require_once 'app/controllers/director.controller.php';
-require_once 'app/views/director.view.php';
 class DirectorModel
 {
     private $db;
