@@ -14,17 +14,31 @@ class   FilmController
     }
     public function showFilms($req, $res)
     {
-        if (!$res->user) return $this->view->response("No autorizado", 401);
+        //if (!$res->user) return $this->view->response("No autorizado", 401);
 
         $orderBy = $req->query->orderBy ?? 'id'; // Default order by 'id'
         $order = $req->query->order ?? 'ASC'; // Default order 'ASC'
 
-        $films = $this->model->getFilms($orderBy, $order);
+        $filmsPerPage = 10;
+        if (isset($req->query->filmsPerPage)) {
+            $filmsPerPage = $req->query->filmsPerPage;
+        }
+        $page = 1;
+        if (isset($req->query->page)) {
+            $page = $req->query->page;
+        }
+        if (!is_numeric($filmsPerPage) || !is_numeric($page)) {
+            return $this->view->response("Parámetros inválidos", 400);
+        }
+        $offset = ($page - 1) * $filmsPerPage;
+
+        $films = $this->model->getFilms($orderBy, $order, $filmsPerPage, $offset);
         if (!$films) {
             return $this->view->response("No se encontraron peliculas", 404);
         }
         return $this->view->response($films);
     }
+
     public function showFilm($req, $res)
     {
         if (!$res->user) return $this->view->response("No autorizado", 401);

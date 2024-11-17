@@ -4,18 +4,30 @@ class FilmModel extends ConfigModel
 {
 
 
-    public function getFilms($orderBy = 'id', $order = 'ASC')
-    {
-        $validColumns = ['id', 'nombre', 'fecha_estreno', 'genero', 'descripcion', 'director'];
-        if (!in_array($orderBy, $validColumns)) {
-            $orderBy = 'id';
-        }
-        $order = strtoupper($order) === 'DESC' ? 'DESC' : 'ASC';
+    public function getFilms($orderBy = 'id', $order = 'ASC', $filmsPerPage = 10, $offset = 0)
+{
+    // Definir las columnas válidas para ordenación
+    $validColumns = ['id', 'nombre', 'fecha_estreno', 'genero', 'descripcion', 'id_director'];
 
-        $query = $this->db->prepare("SELECT * FROM peliculas ORDER BY $orderBy $order");
-        $query->execute();
-        return $query->fetchAll(PDO::FETCH_OBJ);
+    // Validar la columna por la cual ordenar
+    if (!in_array($orderBy, $validColumns)) {
+        $orderBy = 'id'; // Si la columna no es válida, usar 'id' por defecto
     }
+
+    // Validar la dirección del orden
+    $order = strtoupper($order) === 'DESC' ? 'DESC' : 'ASC';
+
+    // Construir la consulta SQL con ordenación y paginación
+    $sql = "SELECT * FROM peliculas ORDER BY $orderBy $order LIMIT $filmsPerPage OFFSET $offset";
+
+    // Preparar y ejecutar la consulta
+    $query = $this->db->prepare($sql);
+    $query->execute();
+
+    // Retornar los resultados
+    return $query->fetchAll(PDO::FETCH_OBJ);
+}
+
     public function getFilm($id)
     {
         $query = $this->db->prepare('SELECT * FROM peliculas WHERE id = ?');
