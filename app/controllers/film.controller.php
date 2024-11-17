@@ -14,7 +14,7 @@ class   FilmController
     }
     public function showFilms($req, $res)
     {
-        //if (!$res->user) return $this->view->response("No autorizado", 401);
+        if (!$res->user) return $this->view->response("No autorizado", 401);
 
         $orderBy = $req->query->orderBy ?? 'id'; // Default order by 'id'
         $order = $req->query->order ?? 'ASC'; // Default order 'ASC'
