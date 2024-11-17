@@ -118,36 +118,44 @@ GET /peliculas/:id
 
 ---
 
-### Ordenar películas - GET /peliculas?orderBy=desc|asc
+### Ordenar películas - GET /peliculas?orderBy=campo&order=asc|desc
 
 **Descripción**:  
-Devuelve la lista de películas ordenadas según el parámetro `orderBy`.
+Devuelve la lista de películas ordenadas según los parámetros `orderBy` y `order`.
 
 ```http
-GET /peliculas?orderBy=desc|asc
+GET /peliculas?orderBy=campo&order=asc|desc
 ```
 
 **Parámetros de Query**:
-- `orderBy` (string): Define el orden de las películas:
-    - `asc`: Orden ascendente.
-    - `desc`: Orden descendente.
+  - `orderBy` (string): Campo por el cual se ordenarán las películas. Ejemplos de campos válidos: `id, nombre, fecha_estreno, genero, descripcion, director`.
+  - `order` (string): Define el orden de las películas:
+      - `asc`: Orden ascendente.
+      - `desc`: Orden descendente.
 
-**Ejemplo de respuesta**:
-```json
-[
-  {
-    "id": 2,
-    "titulo": "The Matrix",
-    "director": "Lana Wachowski, Lilly Wachowski",
-    "año": 1999
-  },
-  {
-    "id": 1,
-    "titulo": "Inception",
-    "director": "Christopher Nolan",
-    "año": 2010
-  }
-]
+### Ejemplo 1: Ordenar por `nombre` en Orden Ascendente
+```
+/peliculas?orderBy=nombre&order=asc
+```
+
+### Ejemplo 2: Ordenar por `nombre` en Orden Descendente
+```
+/peliculas?orderBy=nombre&order=desc
+```
+
+### Ejemplo 3: Ordenar por `fecha_estreno` en Orden Ascendente
+```
+/peliculas?orderBy=fecha_estreno&order=asc
+```
+
+### Ejemplo 4: Ordenar por `fecha_estreno` en Orden Descendente
+```
+/peliculas?orderBy=fecha_estreno&order=desc
+```
+
+### Ejemplo 5: Ordenar por `genero` en Orden Ascendente
+```
+/peliculas?orderBy=genero&order=asc
 ```
 
 ---
