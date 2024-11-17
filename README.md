@@ -1,16 +1,49 @@
 # TPE WEB II
-## Base de datos orientada a peliculas
+## API REST orientada a películas 
 ### Integrantes:
 * Santino Monniello (A)
 * Martín Lospinoso (B)
 
 ### Descripción del proyecto:
-Base de datos orientada a peliculas, el objetivo de este proyecto es una aplicación que nos permita ver la información de las películas de interés, brindándonos información acerca del director, la fecha de estreno y género.
+API REST que permite la gestión de películas y directores. Se pueden listar todas las películas, listar una película por ID, ordenar las películas por orden ascendente o descendente, actualizar una película, eliminar una película y agregar una película.
+
+--- 
+
+## Usuarios predefinidos
+### Administrador
+* username: admin
+* email: admin
+* password: admin
+* rol: admin
+
+### Usuario
+* username: santino
+* email: santino.monniello@gmail.com
+* password: monniello
+* rol: user
 
 ---
+## Acceder a la API REST luego de la implementación del JWT
+### Autenticación con Postman
 
-<img src="https://github.com/user-attachments/assets/aec7388f-17f3-436f-b766-3b3dfb004709">  
---- 
+### Pasos para obtener y usar el token JWT:
+
+1. Dirigite a la pestaña **Authorization** y seleccioná "Basic Auth".
+2. Introducí el **correo electrónico** y la **contraseña** del usuario que deseas autenticar.
+3. Realiza una solicitud `GET` al endpoint:
+   ```
+   /localhost/TPE-WEB-II-RESTful/usuarios/token
+   ```
+4. El cuerpo de la respuesta contendrá un **JWT token**.
+5. Cambia el tipo de **Authorization** a "Bearer Token".
+6. Introducí el token recibido (sin incluir comillas).
+
+### Consideraciones:
+
+- Mientras el token esté configurado, las credenciales de usuario estarán activas.
+- Solo los usuarios con permisos de **administrador** pueden realizar solicitudes `POST`, `PATCH` y `DELETE`.
+- El token tiene una duración de **una hora**.
+
 
 ## ENDPOINTS
 * GET /peliculas

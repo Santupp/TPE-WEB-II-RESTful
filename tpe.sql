@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2024 a las 00:31:10
+-- Tiempo de generación: 17-11-2024 a las 23:01:24
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tpe`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `directores`
+--
+
+CREATE TABLE `directores` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `imagen` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `directores`
+--
+
+INSERT INTO `directores` (`id`, `nombre`, `imagen`) VALUES
+(23, 'Chistopher Nolan ', 'images/6713fb97752e94.30342598.jpg'),
+(24, 'Francis Ford Coppola', 'images/67141f85ba28f9.81827052.jpg'),
+(25, 'Charlotte Wells', 'images/67153ebbe72231.87949377.jpg'),
+(26, 'Quentin Tarantino', 'images/67153f803c2ab8.66337206.jpg'),
+(27, 'Damien Chazelle', 'images/67154099611d96.37090947.jpg');
 
 -- --------------------------------------------------------
 
@@ -54,16 +77,41 @@ INSERT INTO `peliculas` (`id`, `nombre`, `fecha_estreno`, `genero`, `descripcion
 (43, '321321312', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
 (44, '214412', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
 (45, '12421', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
-(46, 'fdsafas', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
 (47, 'vxzcvzxvzx', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
-(48, 'v', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
 (49, 'vczxvzx', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
-(50, 'vzxcvz', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
-(51, 'Fulano', '2023-01-03', 'sci-fi', 'Fulanito de tal ', 'images/6715a76688ceb5.25378058.jpg', 24);
+(50, 'vzxcvz', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(250) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `admin` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `username`, `email`, `password`, `admin`) VALUES
+(3, 'santino', 'santino.monniello@gmail.com', '$2y$10$BcaQha0ByBZn.s796OCBueTVpudcRb1f4daLLds3dpSZ2jNsEjN.6', 0),
+(13, 'admin', 'admin', '$2y$10$f48HFcCwPgde35zLS4d19.PkGBnu2EM05uFXbKAYs13zQCtZ5weha', 1);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `directores`
+--
+ALTER TABLE `directores`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `peliculas`
@@ -73,14 +121,33 @@ ALTER TABLE `peliculas`
   ADD KEY `id_director` (`id_director`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `directores`
+--
+ALTER TABLE `directores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `peliculas`
 --
 ALTER TABLE `peliculas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
