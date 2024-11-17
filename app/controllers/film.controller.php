@@ -16,11 +16,10 @@ class   FilmController
     {
         if (!$res->user) return $this->view->response("No autorizado", 401);
 
-        $orderBy = $req->query->orderBy ?? false; // Si no se envía orderBy, se asigna false
+        $orderBy = $req->query->orderBy ?? 'id'; // Default order by 'id'
+        $order = $req->query->order ?? 'ASC'; // Default order 'ASC'
 
-        $films = $this->model->getFilms($orderBy);  // No es necesario el coalescing operator (??),
-                                                    // se usa el query solamente para obtener
-                                                    // parametros de la URL.
+        $films = $this->model->getFilms($orderBy, $order);
         if (!$films) {
             return $this->view->response("No se encontraron peliculas", 404);
         }

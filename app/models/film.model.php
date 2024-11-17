@@ -4,20 +4,15 @@ class FilmModel extends ConfigModel
 {
 
 
-    public function getFilms($orderBy = false)
+    public function getFilms($orderBy = 'id', $order = 'ASC')
     {
-        $sql = 'SELECT * FROM peliculas';
-
-        switch ($orderBy){
-            case 'asc':
-                $sql .= ' ORDER BY nombre ASC';
-                break;
-            case 'desc':
-                $sql .= ' ORDER BY nombre DESC';
-                break;
+        $validColumns = ['id', 'nombre', 'fecha_estreno', 'genero', 'descripcion', 'director'];
+        if (!in_array($orderBy, $validColumns)) {
+            $orderBy = 'id';
         }
-        
-        $query = $this->db->prepare($sql);
+        $order = strtoupper($order) === 'DESC' ? 'DESC' : 'ASC';
+
+        $query = $this->db->prepare("SELECT * FROM peliculas ORDER BY $orderBy $order");
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
