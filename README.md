@@ -11,13 +11,15 @@ Base de datos orientada a peliculas, el objetivo de este proyecto es una aplicac
 
 <img src="https://github.com/user-attachments/assets/aec7388f-17f3-436f-b766-3b3dfb004709">  
 --- 
-#### ENDPOINTS
+
+## ENDPOINTS
 * GET /peliculas
 * GET /peliculas/:id 
 * GET /peliculas?orderBy=desc//asc <- Ordena las peliculas por orden asc o desc
 * PUT /peliculas/:id 
 * DELETE /peliculas/:id
-* 
+* POST /peliculas
+
 
 ---
 
@@ -166,8 +168,32 @@ DELETE /peliculas/:id
 }
 ```
 
+### Agregar una película - POST /peliculas
 
+**Descripción**:  
+Agrega una nueva película.
 
+```http
+POST /peliculas
+```
+
+**Cuerpo de la solicitud** (JSON):
+```json
+{
+  "nombre": "string",
+  "fecha_estreno": "string",
+  "genero": "string",
+  "descripcion": "string",
+  "director": "integer"
+}
+```
+
+**Ejemplo de respuesta**:
+```json
+{
+  "mensaje": "La película se agregó con éxito"
+}
+```
 ---
 
 
