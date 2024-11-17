@@ -30,12 +30,12 @@ API REST que permite la gestión de películas y directores. Se pueden listar to
 
 1. Dirigite a la pestaña **Authorization** y seleccioná "Basic Auth".
 2. Introducí el **correo electrónico** y la **contraseña** del usuario que deseas autenticar.
-3. Realiza una solicitud `GET` al endpoint:
+3. Realizá una solicitud `GET` al endpoint:
    ```
    /localhost/TPE-WEB-II-RESTful/usuarios/token
    ```
 4. El cuerpo de la respuesta contendrá un **JWT token**.
-5. Cambia el tipo de **Authorization** a "Bearer Token".
+5. Cambiá el tipo de **Authorization** a "Bearer Token".
 6. Introducí el token recibido (sin incluir comillas).
 
 ### Consideraciones:
