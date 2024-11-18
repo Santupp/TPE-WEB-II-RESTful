@@ -14,7 +14,9 @@ class   FilmController
     }
     public function showFilms($req, $res)
     {
-        if (!$res->user) return $this->view->response("No autorizado", 401);
+        //if (!$res->user) return $this->view->response("No autorizado", 401);
+
+
 
         $orderBy = $req->query->orderBy ?? 'id'; // Default order by 'id'
         $order = $req->query->order ?? 'ASC'; // Default order 'ASC'
@@ -58,7 +60,7 @@ class   FilmController
         $id = $req->params->id;
         $film = $this->model->getFilm($id);
         if (!$film) {
-            return $this->view->showError("No existe la pelicula con id= $id", 404);
+            return $this->view->response("No existe la pelicula con id= $id", 404);
         }
         if (empty($req -> body -> nombre)        || empty($req -> body -> fecha_estreno) ||
             empty($req -> body -> genero)        || empty($req -> body -> descripcion)   ||
@@ -90,7 +92,7 @@ class   FilmController
 
         $film = $this->model->getFilm($id);
         if (!$film) {
-            return $this->view->showError("No existe la pelicula con id= $id", 404);
+            return $this->view->response("No existe la pelicula con id= $id", 404);
         }
 
         $this->model->deleteFilm($id);
