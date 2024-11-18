@@ -53,6 +53,13 @@ API REST que permite la gestión de películas y directores. Se pueden listar to
 * DELETE /peliculas/:id
 * POST /peliculas
 
+* GET /directores
+* GET /directores/:id 
+* GET /directores?orderBy=desc//asc <- Ordena las peliculas por orden asc o desc
+* PUT /directores/:id 
+* DELETE /directores/:id
+* POST /directores
+
 
 ---
 
