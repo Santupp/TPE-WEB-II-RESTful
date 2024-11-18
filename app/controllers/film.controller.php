@@ -14,7 +14,7 @@ class   FilmController
     }
     public function showFilms($req, $res)
     {
-        //if (!$res->user) return $this->view->response("No autorizado", 401);
+        if (!$res->user) return $this->view->response("No autorizado", 401);
 
 
 
@@ -55,7 +55,7 @@ class   FilmController
     }
     public function updateFilm($req, $res) {
         if (!isAdmin($res))
-            return $this->view->response('Access denied.', 403);
+            return $this->view->response('Access denied.', 401);
 
         $id = $req->params->id;
         $film = $this->model->getFilm($id);
@@ -86,7 +86,7 @@ class   FilmController
     }
     public function deleteFilm($req, $res) {
         if (!isAdmin($res))
-            return $this->view->response('Access denied.', 403);
+            return $this->view->response('Access denied.', 401);
 
         $id = $req->params->id;
 

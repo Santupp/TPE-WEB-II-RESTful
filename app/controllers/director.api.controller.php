@@ -78,6 +78,9 @@
             $this->view->response("El director con el id $id fue eliminado");
         }
         public function updateDirector($req, $res) {
+            if (!isAdmin($res)) {
+                return $this->view->response('Access denied.', 401);
+            }
             $id = $req->params->id;
             $director = $this -> model -> getDirectorById($id);
             if (!$director) {
@@ -90,6 +93,9 @@
             $nacimiento = $req->body->nacimiento;
 
             $this->model->updateDirector($id, $nombre, $nacimiento);
+            if (!isAdmin($res)) {
+                return $this->view->response('Access denied.', 401);
+            }
             $director = $this->model->getDirectorById($id);
             return $this->view->response($director, 200);
         }
