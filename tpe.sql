@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2024 a las 03:58:28
+-- Tiempo de generación: 18-11-2024 a las 04:01:16
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -83,11 +83,11 @@ INSERT INTO `peliculas` (`id`, `nombre`, `fecha_estreno`, `genero`, `descripcion
 (36, 'Salvar al soldado Ryan', NULL, '1998-07-24', 'Esta película sigue a un grupo de soldados durante la invasión del Día D en la Segunda Guerra Mundial. La misión de estos soldados es encontrar y traer de vuelta al soldado James Francis Ryan, cuyo hermano ha muerto en combate.', '', 32),
 (37, '1976-02-08\r\n', NULL, 'Drama, Crimen', '\"Taxi Driver\" cuenta la historia de Travis Bickle, un veterano de la guerra de Vietnam que se convierte en taxista nocturno en Nueva York. Desilusionado con la sociedad y acosado por la violencia urbana, comienza a planear un acto de justicia por su cuenta, lo que lo lleva por un camino oscuro y perturbador.', '', 33),
 (38, '1960-06-16', NULL, 'Terror, Misterio', '\"Psicosis\" es un thriller psicológico que sigue a Marion Crane, quien roba una gran suma de dinero y se refugia en un motel aislado. Allí, se encuentra con el misterioso propietario del motel, Norman Bates, quien tiene una relación complicada con su madre.', '', 34),
-(39, 'Vértigo', '1958-05-09', 'Suspenso, Misterio, Drama', '\"Vértigo\" sigue a un detective retirado, Scottie Ferguson, que es contratado para seguir a la esposa de un amigo, Madeleine, quien parece estar poseída por el espíritu de una mujer muerta. A medida que se obsesiona con ella, sufre un ataque de vértigo que lo limita, pero su fascinación por Madeleine crece.', '', NULL),
+(39, 'Vértigo', '1958-05-09', 'Suspenso, Misterio, Drama', '\"Vértigo\" sigue a un detective retirado, Scottie Ferguson, que es contratado para seguir a la esposa de un amigo, Madeleine, quien parece estar poseída por el espíritu de una mujer muerta. A medida que se obsesiona con ella, sufre un ataque de vértigo que lo limita, pero su fascinación por Madeleine crece.', '', 34),
 (40, 'Star Wars: Episodio I - La amenaza fantasma', '1999-05-19', 'Ciencia ficción', '\"La amenaza fantasma\" es el primer episodio cronológicamente en la saga de Star Wars. La historia sigue a los Jedi Qui-Gon Jinn y Obi-Wan Kenobi mientras intentan resolver un conflicto interplanetario y descubren a un joven Anakin Skywalker, quien podría ser la clave para restaurar el equilibrio en la Fuerza.', '', 35),
-(41, 'Star Wars: Episodio II - El ataque de los clones', '2002-05-16', 'Ciencia ficción', '\"El ataque de los clones\" es el segundo episodio cronológicamente en la saga de Star Wars. La historia sigue a Anakin Skywalker y Obi-Wan Kenobi en una galaxia al borde de la guerra. Mientras Obi-Wan investiga un intento de asesinato, Anakin se convierte en el protector de Padmé Amidala, lo que da lugar a un romance prohibido.', '', NULL),
+(41, 'Star Wars: Episodio II - El ataque de los clones', '2002-05-16', 'Ciencia ficción', '\"El ataque de los clones\" es el segundo episodio cronológicamente en la saga de Star Wars. La historia sigue a Anakin Skywalker y Obi-Wan Kenobi en una galaxia al borde de la guerra. Mientras Obi-Wan investiga un intento de asesinato, Anakin se convierte en el protector de Padmé Amidala, lo que da lugar a un romance prohibido.', '', 35),
 (42, 'El joven manos de tijera', '1990-12-14', 'Fantasía, Drama', '\"El joven manos de tijera\" cuenta la historia de Edward, un hombre creado por un inventor que, antes de morir, le da manos de tijera en lugar de manos humanas. Cuando la familia de Peg lo encuentra, Edward se integra en una comunidad suburbana, pero su naturaleza diferente y su apariencia provocan la incomprensión y el rechazo.', '', 36),
-(43, 'Bettlejuice', '1988-03-30', 'Comedia, Terror', '\"Beetlejuice\" es una comedia negra que sigue a una pareja de fantasmas recién muertos que intentan asustar a los nuevos ocupantes de su casa. Con la ayuda de un excéntrico y descontrolado bio-exorcista llamado Beetlejuice, intentan recuperar el control de su hogar.', '', NULL);
+(43, 'Bettlejuice', '1988-03-30', 'Comedia, Terror', '\"Beetlejuice\" es una comedia negra que sigue a una pareja de fantasmas recién muertos que intentan asustar a los nuevos ocupantes de su casa. Con la ayuda de un excéntrico y descontrolado bio-exorcista llamado Beetlejuice, intentan recuperar el control de su hogar.', '', 36);
 
 -- --------------------------------------------------------
 
