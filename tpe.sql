@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2024 a las 23:01:24
+-- Tiempo de generación: 18-11-2024 a las 03:58:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -30,19 +30,25 @@ SET time_zone = "+00:00";
 CREATE TABLE `directores` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
-  `imagen` varchar(50) NOT NULL
+  `nacimiento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `directores`
 --
 
-INSERT INTO `directores` (`id`, `nombre`, `imagen`) VALUES
-(23, 'Chistopher Nolan ', 'images/6713fb97752e94.30342598.jpg'),
-(24, 'Francis Ford Coppola', 'images/67141f85ba28f9.81827052.jpg'),
-(25, 'Charlotte Wells', 'images/67153ebbe72231.87949377.jpg'),
-(26, 'Quentin Tarantino', 'images/67153f803c2ab8.66337206.jpg'),
-(27, 'Damien Chazelle', 'images/67154099611d96.37090947.jpg');
+INSERT INTO `directores` (`id`, `nombre`, `nacimiento`) VALUES
+(23, 'Chistopher Nolan ', '1970-07-30'),
+(24, 'Francis Ford Coppola', '1939-04-07'),
+(25, 'Charlotte Wells', '1987-06-13'),
+(26, 'Quentin Tarantino', '1963-03-27'),
+(27, 'Damien Chazelle', '1985-01-19'),
+(32, 'Steven Spielberg', '1946-12-18'),
+(33, 'Martin Scorsese', '1942-11-17'),
+(34, 'Alfred Hitchcock', '1899-08-13'),
+(35, 'George Lucas', '1944-05-14'),
+(36, 'Tim Burton', '1958-08-25'),
+(37, 'Woody Allen', '1935-12-01');
 
 -- --------------------------------------------------------
 
@@ -73,13 +79,15 @@ INSERT INTO `peliculas` (`id`, `nombre`, `fecha_estreno`, `genero`, `descripcion
 (28, 'Django desencadenado', '2013-01-31', 'Drama', 'Django desencadenado es una película estadounidense de 2012 que cuenta la historia de un esclavo liberado que se alía con un cazarrecompensas para vengar sus afrentas y liberar a su esposa:', 'images/671541b08e3402.43164334.jpg', 26),
 (29, 'Érase una vez en… Hollywood', '2019-08-22', 'Comedia', 'Érase una vez en... Hollywood es una película estadounidense de 2019, escrita y dirigida por Quentin Tarantino, que cuenta la historia de un actor de televisión y su doble en los años 60, en un Hollywood que está cambiando.', 'images/67154216c8e6b9.20012915.jpg', 26),
 (33, 'El Padrino 2', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
-(41, 'El Padrino 23º1', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
-(43, '321321312', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
-(44, '214412', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
-(45, '12421', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
-(47, 'vxzcvzxvzx', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
-(49, 'vczxvzx', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24),
-(50, 'vzxcvz', '1974-01-26', 'Crimen', 'Tras la muerte de Don Vito Corleone, su hijo Michael es elegido para liderar los negocios familiares.', 'images/6715a76688ceb5.25378058.jpg', 24);
+(35, 'Tiburon', '1975-06-20', 'Terror', '\"Tiburón\" cuenta la historia de un gran tiburón blanco que aterroriza a los habitantes de una pequeña isla de Nueva Inglaterra. Un oficial de policía, un biólogo marino y un pescador local se embarcan en una peligrosa misión para capturarlo.', '', 32),
+(36, 'Salvar al soldado Ryan', NULL, '1998-07-24', 'Esta película sigue a un grupo de soldados durante la invasión del Día D en la Segunda Guerra Mundial. La misión de estos soldados es encontrar y traer de vuelta al soldado James Francis Ryan, cuyo hermano ha muerto en combate.', '', 32),
+(37, '1976-02-08\r\n', NULL, 'Drama, Crimen', '\"Taxi Driver\" cuenta la historia de Travis Bickle, un veterano de la guerra de Vietnam que se convierte en taxista nocturno en Nueva York. Desilusionado con la sociedad y acosado por la violencia urbana, comienza a planear un acto de justicia por su cuenta, lo que lo lleva por un camino oscuro y perturbador.', '', 33),
+(38, '1960-06-16', NULL, 'Terror, Misterio', '\"Psicosis\" es un thriller psicológico que sigue a Marion Crane, quien roba una gran suma de dinero y se refugia en un motel aislado. Allí, se encuentra con el misterioso propietario del motel, Norman Bates, quien tiene una relación complicada con su madre.', '', 34),
+(39, 'Vértigo', '1958-05-09', 'Suspenso, Misterio, Drama', '\"Vértigo\" sigue a un detective retirado, Scottie Ferguson, que es contratado para seguir a la esposa de un amigo, Madeleine, quien parece estar poseída por el espíritu de una mujer muerta. A medida que se obsesiona con ella, sufre un ataque de vértigo que lo limita, pero su fascinación por Madeleine crece.', '', NULL),
+(40, 'Star Wars: Episodio I - La amenaza fantasma', '1999-05-19', 'Ciencia ficción', '\"La amenaza fantasma\" es el primer episodio cronológicamente en la saga de Star Wars. La historia sigue a los Jedi Qui-Gon Jinn y Obi-Wan Kenobi mientras intentan resolver un conflicto interplanetario y descubren a un joven Anakin Skywalker, quien podría ser la clave para restaurar el equilibrio en la Fuerza.', '', 35),
+(41, 'Star Wars: Episodio II - El ataque de los clones', '2002-05-16', 'Ciencia ficción', '\"El ataque de los clones\" es el segundo episodio cronológicamente en la saga de Star Wars. La historia sigue a Anakin Skywalker y Obi-Wan Kenobi en una galaxia al borde de la guerra. Mientras Obi-Wan investiga un intento de asesinato, Anakin se convierte en el protector de Padmé Amidala, lo que da lugar a un romance prohibido.', '', NULL),
+(42, 'El joven manos de tijera', '1990-12-14', 'Fantasía, Drama', '\"El joven manos de tijera\" cuenta la historia de Edward, un hombre creado por un inventor que, antes de morir, le da manos de tijera en lugar de manos humanas. Cuando la familia de Peg lo encuentra, Edward se integra en una comunidad suburbana, pero su naturaleza diferente y su apariencia provocan la incomprensión y el rechazo.', '', 36),
+(43, 'Bettlejuice', '1988-03-30', 'Comedia, Terror', '\"Beetlejuice\" es una comedia negra que sigue a una pareja de fantasmas recién muertos que intentan asustar a los nuevos ocupantes de su casa. Con la ayuda de un excéntrico y descontrolado bio-exorcista llamado Beetlejuice, intentan recuperar el control de su hogar.', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -89,19 +97,18 @@ INSERT INTO `peliculas` (`id`, `nombre`, `fecha_estreno`, `genero`, `descripcion
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
   `email` varchar(250) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `admin` tinyint(1) NOT NULL
+  `username` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `username`, `email`, `password`, `admin`) VALUES
-(3, 'santino', 'santino.monniello@gmail.com', '$2y$10$BcaQha0ByBZn.s796OCBueTVpudcRb1f4daLLds3dpSZ2jNsEjN.6', 0),
-(13, 'admin', 'admin', '$2y$10$f48HFcCwPgde35zLS4d19.PkGBnu2EM05uFXbKAYs13zQCtZ5weha', 1);
+INSERT INTO `usuario` (`id`, `email`, `password`, `username`) VALUES
+(1, 'nico@web2.com', '$2y$10$xQop0wF1YJ/dKhZcWDqHceUM96S04u73zGeJtU80a1GmM.H5H0EHC', ''),
+(2, '', '$2y$10$XJjarJMOLhdRCYgycMxaG.uzrX6mqYXv/MgVa6POvHFpjuw4Don2G', 'webadmin');
 
 --
 -- Índices para tablas volcadas
@@ -135,19 +142,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `directores`
 --
 ALTER TABLE `directores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `peliculas`
 --
 ALTER TABLE `peliculas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
