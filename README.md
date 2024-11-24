@@ -32,7 +32,7 @@ API REST que permite la gestión de películas y directores. Se pueden listar to
 2. Introducí el **correo electrónico** y la **contraseña** del usuario que deseas autenticar.
 3. Realizá una solicitud `GET` al endpoint:
    ```
-   /localhost/TPE-WEB-II-RESTful/usuarios/token
+   /localhost/TPE-WEB-II-RESTful/api/usuarios/token
    ```
 4. El cuerpo de la respuesta contendrá un **JWT token**.
 5. Cambiá el tipo de **Authorization** a "Bearer Token".
@@ -46,24 +46,24 @@ API REST que permite la gestión de películas y directores. Se pueden listar to
 
 
 ## ENDPOINTS
-* GET /peliculas
-* GET /peliculas/:id 
-* GET /peliculas?orderBy=desc//asc <- Ordena las peliculas por orden asc o desc
-* PUT /peliculas/:id 
-* DELETE /peliculas/:id
-* POST /peliculas
+* GET api/peliculas
+* GET api/peliculas/:id 
+* GET api/peliculas?orderBy=desc//asc <- Ordena las peliculas por orden asc o desc
+* PUT api/peliculas/:id 
+* DELETE api/peliculas/:id
+* POST api/peliculas
 
-* GET /directores
-* GET /directores/:id 
-* GET /directores?orderBy=desc//asc <- Ordena las peliculas por orden asc o desc
-* PUT /directores/:id 
-* DELETE /directores/:id
-* POST /directores
+* GET api/directores
+* GET api/directores/:id 
+* GET api/directores?orderBy=desc//asc <- Ordena las peliculas por orden asc o desc
+* PUT api/directores/:id 
+* DELETE api/directores/:id
+* POST api/directores
 
 
 ---
 
-### Listar películas - GET /peliculas
+### Listar películas - GET api/peliculas
 
 **Descripción**:  
 Devuelve la lista de todas las películas.
@@ -98,13 +98,13 @@ GET /peliculas
 
 ---
 
-### Listar película por ID - GET /peliculas/:id
+### Listar película por ID - GET api/peliculas/:id
 
 **Descripción**:  
 Devuelve los detalles de una película específica según su ID.
 
 ```http
-GET /peliculas/:id
+GET api/peliculas/:id
 ```
 
 **Parámetros de URL**:
@@ -125,13 +125,13 @@ GET /peliculas/:id
 
 ---
 
-### Ordenar películas - GET /peliculas?orderBy=campo&order=asc|desc
+### Ordenar películas - GET api/peliculas?orderBy=campo&order=asc|desc
 
 **Descripción**:  
 Devuelve la lista de películas ordenadas según los parámetros `orderBy` y `order`.
 
 ```http
-GET /peliculas?orderBy=campo&order=asc|desc
+GET api/peliculas?orderBy=campo&order=asc|desc
 ```
 
 **Parámetros de Query**:
@@ -167,13 +167,13 @@ GET /peliculas?orderBy=campo&order=asc|desc
 
 ---
 
-### Actualizar una película - PUT /peliculas/:id
+### Actualizar una película - PUT api/peliculas/:id
 
 **Descripción**:  
 Actualiza los datos de una película específica según su ID.
 
 ```http
-PUT /peliculas/:id
+PUT api/peliculas/:id
 ```
 
 **Parámetros de URL**:
@@ -197,13 +197,13 @@ PUT /peliculas/:id
 
 ---
 
-### Eliminar una película - DELETE /peliculas/:id
+### Eliminar una película - DELETE api/peliculas/:id
 
 **Descripción**:  
 Elimina una película específica según su ID.
 
 ```http
-DELETE /peliculas/:id
+DELETE api/peliculas/:id
 ```
 
 **Parámetros de URL**:
@@ -216,13 +216,13 @@ DELETE /peliculas/:id
 }
 ```
 
-### Agregar una película - POST /peliculas
+### Agregar una película - POST api/peliculas
 
 **Descripción**:  
 Agrega una nueva película.
 
 ```http
-POST /peliculas
+POST api/peliculas
 ```
 
 **Cuerpo de la solicitud** (JSON):
